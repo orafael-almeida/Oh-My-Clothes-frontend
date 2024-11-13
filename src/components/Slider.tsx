@@ -77,7 +77,7 @@ const Slider = () => {
                 alt={slide.title}
                 fill
                 sizes="100%"
-                className="object-center"
+                className="object-cover"
                 priority
               />
             </div>
