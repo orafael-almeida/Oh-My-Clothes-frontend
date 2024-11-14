@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.pexels.com",
       },
+      {
+        protocol: "https",
+        hostname: "rsv-ink-images-production.s3.sa-east-1.amazonaws.com",
+      },
     ],
   },
 };
