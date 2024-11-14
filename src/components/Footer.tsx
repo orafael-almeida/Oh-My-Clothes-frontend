@@ -10,7 +10,7 @@ const Footer = () => {
         {/* LEFT */}
         <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8">
           <Link href="/">
-            <div className="text-2xl tracking-wide">LAMA</div>
+            <div className="text-2xl tracking-wide">SHOP+</div>
           </Link>
           <p>Av. Beira Mar Norte, Centro Florianópolis - SC, 88015-970</p>
           <span className="font-semibold">contato@shop.dev</span>
@@ -50,7 +50,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">SHOP</h1>
+            <h1 className="font-medium text-lg">CATÁLOGO</h1>
             <div className="flex flex-col gap-6">
               <Link href="">Nova coleção</Link>
               <Link href="">Acessórios</Link>
@@ -60,7 +60,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">HELP</h1>
+            <h1 className="font-medium text-lg">AJUDA</h1>
             <div className="flex flex-col gap-6">
               <Link href="">Atendimento</Link>
               <Link href="">Minha conta</Link>
