@@ -7,7 +7,7 @@ import {createContext, ReactNode} from "react";
 
 const refreshToken = JSON.parse(Cookies.get("refreshToken") || "{}");
 
-const WixClient = createClient({
+const wixClient = createClient({
   modules: {
     products,
     collections,
@@ -25,13 +25,13 @@ const WixClient = createClient({
   }),
 });
 
-export type WixClient = typeof WixClient;
+export type WixClient = typeof wixClient;
 
-export const WixClientContext = createContext<WixClient>(WixClient);
+export const WixClientContext = createContext<WixClient>(wixClient);
 
 export const WixClientContextProvider = ({children}: {children: ReactNode}) => {
   return (
-    <WixClientContext.Provider value={WixClient}>
+    <WixClientContext.Provider value={wixClient}>
       {children}
     </WixClientContext.Provider>
   );
