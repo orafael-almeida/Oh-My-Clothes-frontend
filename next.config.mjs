@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "rsv-ink-images-production.s3.sa-east-1.amazonaws.com",
       },
+      {
+        protocol: "https",
+        hostname: "static.wixstatic.com",
+      },
     ],
   },
 };
