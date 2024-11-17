@@ -1,8 +1,16 @@
 import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
+import Skeleton from "@/components/Skeleton";
+import {wixClientServer} from "@/lib/wixClientserver";
 import Image from "next/image";
+import {Suspense} from "react";
 
-const ListPage = () => {
+const ListPage = async ({searchParams}: {searchParams: any}) => {
+  const wixClient = await wixClientServer();
+  const cat = await wixClient.collections.getCollectionBySlug(
+    searchParams.cat || "all-products"
+  );
+
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px64 relative">
       {/* CAMPANHA */}
@@ -29,7 +37,14 @@ const ListPage = () => {
       <Filter />
       {/* PRODUCTS */}
       <h1 className="text-xl mt-12 font-semibold"> Celulares para Você!</h1>
-      <ProductList />
+      <Suspense fallback={<Skeleton />}>
+        <ProductList
+          categoryId={
+            cat.collection?._id || "00000000-000000-000000-000000000001"
+          }
+          searchParams={searchParams}
+        />
+      </Suspense>
     </div>
   );
 };
