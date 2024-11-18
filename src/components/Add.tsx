@@ -45,11 +45,15 @@ const Add = ({
               +
             </button>
           </div>
-          <div className="text-sm">
-            Últimas{" "}
-            <span className="text-orange-500">{stockNumber} unidades.</span>
-            <br /> Garanta a sua!
-          </div>
+          {stockNumber < 1 ? (
+            <div className="text-sm"> Produto esgotado</div>
+          ) : (
+            <div className="text-sm">
+              Últimas{" "}
+              <span className="text-orange-500">{stockNumber} unidades.</span>
+              <br /> Garanta a sua!
+            </div>
+          )}
         </div>
         <button
           className="w-36 text-sm rounded-3xl ring-1 ring-rosa text-rosa py-2 px-4 hover:bg-rosa hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-white disabled:ring-0
