@@ -2,6 +2,7 @@ import Add from "@/components/Add";
 import CustomizeProducts from "@/components/CustomizeProducts";
 import ProductsImages from "@/components/ProductsImages";
 import {wixClientServer} from "@/lib/wixClientserver";
+import DOMPurify from "isomorphic-dompurify";
 import {notFound} from "next/navigation";
 
 const SinglePage = async ({params}: {params: {slug: string}}) => {
@@ -24,7 +25,12 @@ const SinglePage = async ({params}: {params: {slug: string}}) => {
       {/* TEXTOS */}
       <div className="w-full lg:w-1/2 flex flex-col gap-6">
         <h1 className="text-4xl font-medium">{product.name}</h1>
-        <p className="text-gray-500">{product.description}</p>
+        <p
+          className="text-gray-500"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(product.description || ""),
+          }}
+        ></p>
         <div className="h-[2px] bg-gray-100" />
         {product.price?.price === product.price?.discountedPrice ? (
           <h2 className="font-medium text-2xl">
