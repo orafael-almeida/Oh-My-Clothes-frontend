@@ -2,17 +2,25 @@
 
 import {useState} from "react";
 
-const Add = () => {
+const Add = ({
+  productId,
+  variantId,
+  stockNumber,
+}: {
+  productId: string;
+  variantId: string;
+  stockNumber: number;
+}) => {
   const [quantity, setQuantity] = useState(1);
 
-  // TEMPORARY
-  const inStock = 4
+  // // TEMPORARY
+  // const inStock = 4;
 
   const handleQuantity = (type: "inc" | "dec") => {
     if (type === "dec" && quantity > 1) {
       setQuantity((prev) => prev - 1);
     }
-    if (type === "inc" && quantity < inStock) {
+    if (type === "inc" && quantity < stockNumber) {
       setQuantity((prev) => prev + 1);
     }
   };
@@ -38,7 +46,8 @@ const Add = () => {
             </button>
           </div>
           <div className="text-sm">
-            Últimas <span className="text-orange-500">4 unidades.</span>
+            Últimas{" "}
+            <span className="text-orange-500">{stockNumber} unidades.</span>
             <br /> Garanta a sua!
           </div>
         </div>

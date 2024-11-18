@@ -1,7 +1,8 @@
 "use client";
 
 import {products} from "@wix/stores";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import Add from "./Add";
 
 const CustomizeProducts = ({
   productId,
@@ -15,6 +16,18 @@ const CustomizeProducts = ({
   const [selectedOptions, setSelectedOptions] = useState<{
     [key: string]: string;
   }>({});
+  const [selectedVariant, setSelectedvariant] = useState<products.Variant>();
+
+  useEffect(() => {
+    const variant = variants.find((variant) => {
+      const variantChoices = variant.choices;
+      if (!variantChoices) return false;
+      return Object.entries(selectedOptions).every(
+        ([key, value]) => variantChoices[key] === value
+      );
+    });
+    setSelectedvariant(variant);
+  }, [selectedOptions, variants]);
 
   const handleOptionsSelect = (optionType: string, choice: string) => {
     setSelectedOptions((prev) => ({...prev, [optionType]: choice}));
@@ -36,7 +49,6 @@ const CustomizeProducts = ({
     });
   };
 
-  console.log(variants);
 
   return (
     <div className="flex flex-col gap-6">
@@ -96,30 +108,13 @@ const CustomizeProducts = ({
           </ul>
         </div>
       ))}
-      {/* COLOR */}
-      {/* <h4 className="font-medium">Cor do produto</h4>
-          <ul className="flex items-center gap-3">
-            <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-pointer relative bg-black">
-              <div className="absolute w-10 h-10 rounded-full ring-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-            </li>
-            <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-pointer relative bg-blue-800"></li>
-            <li className="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-not-allowed relative bg-green-800">
-              <div className="absolute w-10 h-[2px] bg-red-500 rotate-45  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-            </li>
-          </ul> */}
-      {/* OTHERS */}
-      {/* <h4 className="font-medium">Tamanho</h4>
-      <ul className="flex items-center gap-3">
-        <li className="ring-1 ring-rosa text-rosa rounded-md py-1 px-4 text-sm cursor-pointer">
-          P
-        </li>
-        <li className="ring-1 ring-rosa text-white bg-rosa rounded-md py-1 px-4 text-sm cursor-pointer">
-          M
-        </li>
-        <li className="ring-1 ring-pink-200 text-white bg-pink-200 rounded-md py-1 px-4 text-sm cursor-not-allowed">
-          G
-        </li>
-      </ul> */}
+      <Add
+        productId={productId}
+        variantId={
+          selectedVariant?._id || "00000000-0000-0000-0000-000000000000"
+        }
+        stockNumber={selectedVariant?.stock?.quantity || 0}
+      />
     </div>
   );
 };
