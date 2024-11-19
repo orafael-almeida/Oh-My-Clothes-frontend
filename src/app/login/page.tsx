@@ -92,7 +92,6 @@ const LoginPage = () => {
         default:
           break;
       }
-      console.log(response);
 
       switch (response?.loginState) {
         case LoginState.SUCCESS:
@@ -101,7 +100,7 @@ const LoginPage = () => {
             response.data.sessionToken
           );
           console.log(tokens);
-          Cookies.set("refreshTOken", JSON.stringify(tokens.refreshToken), {
+          Cookies.set("refreshToken", JSON.stringify(tokens.refreshToken), {
             expires: 2,
           });
           wixClient.auth.setTokens(tokens);
