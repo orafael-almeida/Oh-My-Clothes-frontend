@@ -24,8 +24,14 @@ const NavIcons = () => {
     if (!isLoggedIn) {
       router.push("/login");
     } else {
+      setIsCartOpen(false);
       setIsProfileOpen((prev) => !prev);
     }
+  };
+
+  const handleCart = () => {
+    setIsProfileOpen(false);
+    setIsCartOpen((prev) => !prev);
   };
 
   const handleLogout = async () => {
@@ -40,21 +46,30 @@ const NavIcons = () => {
   const {cart, counter, getCart} = useCartStore();
 
   useEffect(() => {
-    getCart(wixClient);
-  }, [wixClient, getCart]);
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (
+        !target.closest(".profile-dropdown") &&
+        !target.closest(".profile-icon") &&
+        isProfileOpen
+      ) {
+        setIsProfileOpen(false);
+      }
 
-  // LOGIN WITH WIX-MANAGED OAUTH
+      if (
+        !target.closest(".cart-modal") &&
+        !target.closest(".cart-icon") &&
+        isCartOpen
+      ) {
+        setIsCartOpen(false);
+      }
+    };
 
-  // const wixClient = useWixClient();
-  // const login = async () => {
-  //   const loginRequestData = wixClient.auth.generateOAuthData(
-  //     "http://localhost:3000"
-  //   );
-  //   console.log(loginRequestData);
-  //   localStorage.setItem("oAuthRedirectData", JSON.stringify(loginRequestData));
-  //   const {authUrl} = await wixClient.auth.getAuthUrl(loginRequestData);
-  //   window.location.href = authUrl;
-  // };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isProfileOpen, isCartOpen]);
 
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative">
@@ -63,13 +78,22 @@ const NavIcons = () => {
         alt="search icon"
         width={22}
         height={22}
-        className="cursor-pointer"
+        className="cursor-pointer profile-dropdown"
         onClick={handleProfile}
       />
       {isProfileOpen && (
-        <div className="z-20 bg-white absolute p-4 rounded-md top-12 left-0 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+        <div
+          className="z-20 bg-white absolute p-4 rounded-md top-12 left-0 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] profile-dropdown"
+          onClick={(e) => e.stopPropagation()}
+        >
           <Link href="">Profile</Link>
-          <div className="mt-2 cursor-pointer" onClick={handleLogout}>
+          <div
+            className="mt-2 cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleLogout();
+            }}
+          >
             {isLoading ? "Saindo..." : "Logout"}
           </div>
         </div>
@@ -81,16 +105,17 @@ const NavIcons = () => {
         height={22}
         className="cursor-pointer"
       />
-      <div
-        className="relative cursor-pointer"
-        onClick={() => setIsCartOpen((prev) => !prev)}
-      >
+      <div className="relative cursor-pointer cart-icon" onClick={handleCart}>
         <Image src="/cart.png" alt="search icon" width={22} height={22} />
         <div className="absolute -top-4 -right-4 w-6 h-6 bg-rosa rounded-full text-white text-sm flex items-center justify-center">
           {counter}
         </div>
       </div>
-      {isCartOpen && <CartModal />}
+      {isCartOpen && (
+        <div className="cart-modal">
+          <CartModal />
+        </div>
+      )}
     </div>
   );
 };
