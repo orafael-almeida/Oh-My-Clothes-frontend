@@ -12,6 +12,7 @@ const Pagination = ({
   hasNext: boolean;
 }) => {
   const pathname = usePathname();
+  console.log(pathname);
   const searchParams = useSearchParams();
   const {replace} = useRouter();
 
@@ -20,6 +21,10 @@ const Pagination = ({
     params.set("page", pageNumber.toString());
     replace(`${pathname}?${params.toString()}`);
   };
+
+  const isProductPage = /^\/app\/[^/]+\/page$/.test(pathname || "");
+
+  if (!isProductPage) return null;
 
   return (
     <div className="mt-2 flex justify-between w-full">
@@ -33,7 +38,7 @@ const Pagination = ({
       <button
         className="rounded-md bg-rosa text-white p-2 text-sm w-24 cursor-pointer disabled:cursor-not-allowed disabled:bg-pink-200 "
         disabled={!hasNext}
-        onClick={() => createPageUrl(currentPage +1)}
+        onClick={() => createPageUrl(currentPage + 1)}
       >
         Próxima
       </button>

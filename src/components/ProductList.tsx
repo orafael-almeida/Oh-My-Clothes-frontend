@@ -4,6 +4,7 @@ import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import Link from "next/link";
 import Pagination from "./Pagination";
+import {usePathname} from "next/navigation";
 
 const PRODUCT_PER_PAGE = 8;
 
@@ -90,6 +91,7 @@ const ProductList = async ({
               }}
             ></div>
           )}
+
           <button
             className="rounded-2xl ring-1 ring-rosa text-rosa py-2 px-4 text-xs hover:bg-rosa hover:text-white w-max
           "
@@ -98,6 +100,7 @@ const ProductList = async ({
           </button>
         </Link>
       ))}
+
       <Pagination
         currentPage={res.currentPage || 0}
         hasPrev={res.hasPrev()}
