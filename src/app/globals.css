@@ -10,7 +10,6 @@
   scrollbar-width: none;
 }
 
-
 *::-webkit-scrollbar {
   width: 8px;
 }
@@ -21,6 +20,6 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #85646E;
+  background-color: #F35C7A;
   border-radius: 14px;
 }
