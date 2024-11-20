@@ -7,6 +7,29 @@ import dynamic from "next/dynamic";
 
 const NavIcons = dynamic(() => import("./NavIcons"), {ssr: false});
 
+const pageLinks = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Produtos",
+    href: "/list",
+  },
+  {
+    name: "Compras",
+    href: "/list",
+  },
+  {
+    name: "Sobre",
+    href: "/",
+  },
+  {
+    name: "Contato",
+    href: "/",
+  },
+];
+
 const Navbar = () => {
   return (
     <div className="h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
@@ -27,11 +50,12 @@ const Navbar = () => {
             <div className="text-2xl tracking-wide">SHOP</div>
           </Link>
           <div className="hidden xl:flex gap-4">
-            <Link href="/">Home</Link>
-            <Link href="/">Shop</Link>
-            <Link href="/">Compras</Link>
-            <Link href="/">Sobre</Link>
-            <Link href="/">Contact</Link>
+            {pageLinks.map((link) => (
+              <Link href={link.href} className="relative group">
+                {link.name}
+                <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-rosa transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ))}
           </div>
         </div>
 
