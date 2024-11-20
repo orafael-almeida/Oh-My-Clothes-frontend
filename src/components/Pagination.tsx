@@ -12,7 +12,6 @@ const Pagination = ({
   hasNext: boolean;
 }) => {
   const pathname = usePathname();
-  console.log(pathname);
   const searchParams = useSearchParams();
   const {replace} = useRouter();
 

@@ -93,7 +93,7 @@ const ProductList = async ({
           )}
 
           <button
-            className="rounded-2xl ring-1 ring-rosa text-rosa py-2 px-4 text-xs hover:bg-rosa hover:text-white w-max
+            className="rounded-2xl ring-1 ring-rosa text-rosa py-2 px-4 text-xs hover:bg-rosa hover:text-white w-max transition-colors
           "
           >
             Adicionar
