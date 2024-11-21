@@ -16,6 +16,10 @@ const config: Config = {
       colors: {
         rosa: "#F35C7A",
       },
+      screens: {
+        xs: "375px",
+        xxs: "320px",
+      },
     },
   },
   plugins: [],
