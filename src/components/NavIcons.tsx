@@ -110,12 +110,12 @@ const NavIcons = () => {
         <div className="absolute -top-4 -right-4 w-6 h-6 bg-rosa rounded-full text-white text-sm flex items-center justify-center">
           {counter}
         </div>
+        {isCartOpen && (
+          <div className="cart-modal absolute -top-1 -right-3">
+            <CartModal />
+          </div>
+        )}
       </div>
-      {isCartOpen && (
-        <div className="cart-modal">
-          <CartModal />
-        </div>
-      )}
     </div>
   );
 };
