@@ -10,7 +10,7 @@ const Filter = () => {
   const handleFilterChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     const params = new URLSearchParams(searchParams);
     params.set(name, value);
     replace(`${pathname}?${params.toString()}`);
@@ -25,7 +25,9 @@ const Filter = () => {
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
           onChange={handleFilterChange}
         >
-          <option>Type</option>
+          <option disabled selected>
+            Tipo
+          </option>
           <option value="physical">Físico</option>
           <option value="digital">Digital</option>
         </select>
@@ -49,16 +51,13 @@ const Filter = () => {
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
           onChange={handleFilterChange}
         >
-          <option>Categoria</option>
-          <option value="">Novidades</option>
-          <option value="">Popular</option>
-        </select>
-        <select
-          name=""
-          id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-        >
-          <option>Todos os filtros</option>
+          <option disabled selected>
+            Categoria
+          </option>
+          <option value="categoria-1">Camisetas</option>
+          <option value="">Regatas</option>
+          <option value="">Casacos</option>
+          <option value="moletoms">Moletons</option>
         </select>
       </div>
       <div className="">
@@ -68,7 +67,9 @@ const Filter = () => {
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-white ring-1 ring-gray-400"
           onChange={handleFilterChange}
         >
-          <option>Ordenar por</option>
+          <option disabled selected>
+            Ordenar por
+          </option>
           <option value="asc price">Menor preço</option>
           <option value="desc price">Maior preço</option>
           <option value="asc lastUpdated">Novidades</option>
