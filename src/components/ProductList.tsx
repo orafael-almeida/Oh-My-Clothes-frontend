@@ -1,12 +1,12 @@
 import {wixClientServer} from "@/lib/wixClientserver";
 import {products} from "@wix/stores";
-import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import Link from "next/link";
 import Pagination from "./Pagination";
-import {usePathname} from "next/navigation";
+import {FaRegHeart, FaStar} from "react-icons/fa";
+import {IoEyeOutline} from "react-icons/io5";
 
-const PRODUCT_PER_PAGE = 8;
+const PRODUCT_PER_PAGE = 20;
 
 const ProductList = async ({
   categoryId,
@@ -52,7 +52,7 @@ const ProductList = async ({
       {res.items.map((product: products.Product) => (
         <Link
           href={`/${product.slug}`}
-          className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
+          className="w-full flex flex-col gap-1 sm:w-[45%] lg:w-[22%]"
           key={product._id}
         >
           <div className="relative w-full h-80">
@@ -72,32 +72,31 @@ const ProductList = async ({
                 className="absolute object-cover rounded-md"
               />
             )}
+            <div className="p-1 m-1 rounded-full absolute top-0 right-0 h-8 w-8 bg-gray-200/10 z-20 flex items-center justify-center">
+              <FaRegHeart
+                className=" text-red-600/50 hover:scale-110"
+                size={20}
+              />
+            </div>
           </div>
-          <div className="flex justify-between">
-            <span className="font-medium">{product.name}</span>
-            <span className="font-semibold">
-              R$ <span className="text-2xl">{product.price?.price}</span>
-            </span>
-          </div>
-          {product.additionalInfoSections && (
-            <div
-              className="text-sm text-gray-500"
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(
-                  product.additionalInfoSections.find(
-                    (section: any) => section.title === "CORES"
-                  )?.description || ""
-                ),
-              }}
-            ></div>
-          )}
 
-          <button
-            className="rounded-2xl ring-1 ring-rosa text-rosa py-2 px-4 text-xs hover:bg-rosa hover:text-white w-max transition-colors
-          "
-          >
-            Adicionar
-          </button>
+          <div className="flex-col">
+            <div className="flex justify-between items-center">
+              <span className="font-medium">{product.name}</span>
+              <IoEyeOutline className="mr-2 text-gray-500" size={20} />
+            </div>
+
+            <div className="flex justify-between items-center">
+              <div className="flex">
+                {Array.from({length: 5}, (_, index) => (
+                  <FaStar key={index} className={`text-yellow-500 `} />
+                ))}
+              </div>
+              <div className="preco">
+                R$ <span className="text-2xl">{product.price?.price}</span>
+              </div>
+            </div>
+          </div>
         </Link>
       ))}
 
