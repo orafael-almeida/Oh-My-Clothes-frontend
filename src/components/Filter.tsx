@@ -55,8 +55,8 @@ const Filter = () => {
             Categoria
           </option>
           <option value="categoria-1">Camisetas</option>
-          <option value="">Regatas</option>
-          <option value="">Casacos</option>
+          <option value="regatas">Regatas</option>
+          <option value="sueters">Casacos</option>
           <option value="moletoms">Moletons</option>
         </select>
       </div>

@@ -10,7 +10,7 @@ const CategoryList = async () => {
 
   return (
     <div className="px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-64 text-sm">
-      <div className="flex md:justify-between md:items-center md:gap-8 bg-[#f6f6f6] py-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory md:pl-8">
+      <div className="flex md:justify-between md:items-center md:gap-8 rounded-md bg-[#f6f6f6] py-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory md:pl-8">
         {cats.items
           .filter(
             (item) => item.name !== "Novos Produtos" && item.name !== "Destaque"
@@ -26,6 +26,7 @@ const CategoryList = async () => {
                   src={item.media?.mainMedia?.image?.url || ""}
                   alt="categoria"
                   fill
+                  sizes="160px"
                   className="object-contain p-6"
                 />
               </div>
