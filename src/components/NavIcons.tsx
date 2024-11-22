@@ -15,7 +15,6 @@ const NavIcons = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
-  const pathname = usePathname();
 
   const wixClient = useWixClient();
   const isLoggedIn = wixClient.auth.loggedIn();
@@ -105,17 +104,16 @@ const NavIcons = () => {
         height={22}
         className="cursor-pointer"
       />
-      <div className="relative cursor-pointer cart-icon flex-shrink-0" onClick={handleCart}>
-        <Image 
-        src="/cart.png" 
-        alt="search icon" 
-        width={22} 
-        height={22} />
+      <div
+        className="relative cursor-pointer cart-icon flex-shrink-0 mr-3"
+        onClick={handleCart}
+      >
+        <Image src="/cart.png" alt="search icon" width={22} height={22} />
         <div className="absolute -top-4 -right-4 w-6 h-6 bg-rosa rounded-full text-white text-sm flex items-center justify-center">
           {counter}
         </div>
         {isCartOpen && (
-          <div className="cart-modal absolute -top-1 -right-3">
+          <div className="cart-modal relative -top-1 -right-3">
             <CartModal />
           </div>
         )}
