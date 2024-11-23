@@ -13,9 +13,9 @@ const Slider = () => {
   const slides = [
     {
       id: 1,
-      title: "Coleção de Verão!",
-      description: "Até 50% off!",
-      img: "/image-hero1.webp",
+      title: "Coleção de Fim de Ano!",
+      description: "Até 60% off!",
+      img: "/IMAGEM_1.webp",
       url: "/list",
       bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
     },
@@ -23,7 +23,7 @@ const Slider = () => {
       id: 2,
       title: "Coleção de Inverno!",
       description: "Até 70% off!",
-      img: "/image-hero2.webp",
+      img: "/IMAGEM_2.webp",
       url: "/list",
       bg: "bg-gradient-to-r from-pink-50 to-blue-50",
     },
@@ -31,7 +31,7 @@ const Slider = () => {
       id: 3,
       title: "Coleção de Primavera!",
       description: "Até 80% off!",
-      img: "/image-hero3.webp",
+      img: "/IMAGEM_3.webp",
       url: "/list",
       bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
     },
@@ -42,7 +42,7 @@ const Slider = () => {
 
     intervalRef.current = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 3000);
+    }, 4000);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -65,7 +65,7 @@ const Slider = () => {
 
   return (
     <div
-      className="h-[calc(100vh-80px)] overflow-hidden"
+      className="h-[calc(80vh-70px)] sm:h-[calc(70vh-70px)] overflow-hidden relative"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -75,47 +75,47 @@ const Slider = () => {
       >
         {slides.map((slide) => (
           <div
-            className={`${slide.bg} w-screen h-full flex flex-col gap-2 lg:flex-row`}
+            className={`${slide.bg} w-screen h-full flex flex-col sm:flex-row`}
             key={slide.id}
           >
             {/* TEXT CONTAINER */}
-            <div className="h-1/3 xl:w-1/2 lg:h-full flex flex-col items-center justify-center gap-3 2xl:gap-12 text-center">
-              <h2 className="text-xl lg:text-3xl 2xl:text-5xl">
+            <div className="h-1/3 sm:w-1/2 sm:h-full flex flex-col items-center justify-center gap-y-2 2xl:gap-12 text-center">
+              <h2 className="text-xl mt-3 lg:text-3xl 2xl:text-5xl">
                 {slide.description}
               </h2>
               <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-semibold">
                 {slide.title}
               </h1>
               <Link href={slide.url}>
-                <button className="rounded-2xl ring-1 ring-rosa text-rosa py-2 px-4 text-xs hover:bg-rosa hover:text-white w-max transition-colors">
+                <button className="rounded-2xl ring-1 ring-rosa text-rosa py-2 px-4 mb-3 text-xs hover:bg-rosa hover:text-white w-max transition-colors">
                   Ver coleção
                 </button>
               </Link>
             </div>
             {/* IMAGE CONTAINER */}
-            <div className="h-2/3 lg:w-4/5 lg:h-full relative">
+            <div className="h-2/3 sm:w-1/2 sm:h-full relative">
               <Image
                 src={slide.img}
-                alt=""
+                alt="Images Logo"
                 fill
                 sizes="100%"
-                className="object-cover xl:object-fill"
+                className="object-cover object-top"
               />
             </div>
           </div>
         ))}
       </div>
-      <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
+      <div className="absolute mx-auto left-1/2 transform -translate-x-1/2 items-center bottom-4 flex gap-4">
         {slides.map((slide, index) => (
           <div
-            className={`w-3 h-3 rounded-full ring-1 ring-gray-600 cursor-pointer flex items-center justify-center ${
+            className={`w-3 h-3 rounded-full ring-1 ring-slate-500 cursor-pointer flex items-center justify-center ${
               current === index ? "scale-150" : ""
             }`}
             key={slide.id}
             onClick={() => setCurrent(index)}
           >
             {current === index && (
-              <div className="w-[6px] h-[6px] bg-gray-600 rounded-full"></div>
+              <div className="w-[6px] h-[6px] bg-slate-500 rounded-full"></div>
             )}
           </div>
         ))}
