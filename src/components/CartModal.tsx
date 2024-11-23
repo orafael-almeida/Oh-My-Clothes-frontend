@@ -61,14 +61,15 @@ const CartModal = () => {
                   {/* TOP */}
                   <div className="">
                     {/* TITLE */}
-                    <div className="flex flex-col md:items-center md:justify-between md:gap-8 w-max">
+                    <div className="flex flex-col items-end md:justify-between md:gap-8 w-max">
                       <h3 className="font-semibold">
                         {item.productName?.original}
                       </h3>
-                      <div className="p-1 bg-white rounded-sm flex items-center gap-2">
+
+                      <div className="p-1 rounded-sm flex items-center gap-2">
                         {item.quantity && item.quantity > 1 && (
                           <div className="text-xs text-green-500">
-                            {item.quantity} x{" "}
+                            {item.quantity} x
                           </div>
                         )}
                         R$ {item.price?.amount}
