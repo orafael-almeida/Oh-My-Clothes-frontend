@@ -48,14 +48,14 @@ const ProductList = async ({
 
   const res = await productQuery.find();
   return (
-    <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
+    <div className="mt-12 flex gap-y-6 justify-between flex-wrap">
       {res.items.map((product: products.Product) => (
         <Link
           href={`/${product.slug}`}
-          className="w-full flex flex-col gap-1 sm:w-[45%] lg:w-[22%]"
+          className="w-[45%] flex flex-col xs:gap-1 sm:w-[45%] lg:w-[22%]"
           key={product._id}
         >
-          <div className="relative w-full h-80">
+          <div className="relative w-full h-[20vh] sm:h-80">
             <Image
               src={product.media?.mainMedia?.image?.url || "/product.png"}
               alt="Imagem do Produto"
@@ -72,7 +72,7 @@ const ProductList = async ({
                 className="absolute object-cover rounded-md"
               />
             )}
-            <div className="p-1 m-1 rounded-full absolute top-0 right-0 h-8 w-8 bg-gray-200/10 z-20 flex items-center justify-center">
+            <div className="p-1 m-1 rounded-full absolute top-0 right-0 h-8 w-8 bg-slate-200/30 z-20 flex items-center justify-center">
               <FaRegHeart
                 className=" text-red-600/50 hover:scale-110"
                 size={20}
@@ -82,18 +82,21 @@ const ProductList = async ({
 
           <div className="flex-col">
             <div className="flex justify-between items-center">
-              <span className="font-medium">{product.name}</span>
-              <IoEyeOutline className="mr-2 text-gray-500" size={20} />
+              <span className="text-sm sm:text-base text-center">{product.name}</span>
+              <IoEyeOutline
+                className="hidden sm:block mr-2 text-gray-500"
+                size={20}
+              />
             </div>
 
             <div className="flex justify-between items-center">
               <div className="flex">
                 {Array.from({length: 5}, (_, index) => (
-                  <FaStar key={index} className={`text-yellow-500 `} />
+                  <FaStar key={index} className={`text-yellow-500 text-xs `} />
                 ))}
               </div>
               <div className="preco">
-                R$ <span className="text-2xl">{product.price?.price}</span>
+                <span className="text-xs">R$ </span><span className="text-base sm:text-2xl">{product.price?.price}</span>
               </div>
             </div>
           </div>

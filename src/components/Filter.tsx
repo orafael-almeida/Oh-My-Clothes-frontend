@@ -1,6 +1,7 @@
 "use client";
 
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
+import {BsSortDown} from "react-icons/bs";
 
 const Filter = () => {
   const pathname = usePathname();
@@ -17,12 +18,12 @@ const Filter = () => {
   };
 
   return (
-    <div className="mt-12 flex justify-between">
-      <div className="flex gap-6 flex-wrap">
+    <div className="flex mt-6 sm:mt-12 sm:flex justify-between">
+      <div className="flex gap-2 sm:gap-6 flex-wrap">
         <select
           name="type"
           id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
+          className="hidden xs:flex py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
           onChange={handleFilterChange}
         >
           <option disabled selected>
@@ -35,17 +36,16 @@ const Filter = () => {
           type="text"
           name="min"
           placeholder="Valor mínimo"
-          className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
+          className="hidden sm:flex text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           onChange={handleFilterChange}
         />
         <input
           type="text"
           name="max"
           placeholder="Valor máximo"
-          className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
+          className="hidden sm:flex text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           onChange={handleFilterChange}
         />
-        {/* TODO: Filter Categories */}
         <select
           name="cat"
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
@@ -60,11 +60,12 @@ const Filter = () => {
           <option value="moletoms">Moletons</option>
         </select>
       </div>
-      <div className="">
+      <div className="relative">
+        <BsSortDown className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
         <select
           name="sort"
-          id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-white ring-1 ring-gray-400"
+          id="sort"
+          className="appearance-none py-2 pl-8 pr-4 rounded-2xl text-xs font-medium bg-white ring-1 ring-gray-400"
           onChange={handleFilterChange}
         >
           <option disabled selected>
