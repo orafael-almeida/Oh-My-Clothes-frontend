@@ -1,15 +1,15 @@
 const cards = [
   {
     src: "/fast-shipping.svg",
-    alt: "Entrega grátis",
-    title: "ENTREGA GRÁTIS",
+    alt: "Entrega rápida",
+    title: "ENTREGA RÁPIDA",
     subtitle: "Sul e Sudeste",
   },
   {
     src: "/support.svg",
     alt: "Suporte 24/7",
     title: "SUPORTE 24/7",
-    subtitle: "Suporte Dedicado",
+    subtitle: "Suporte dedicado",
   },
   {
     src: "/refund.svg",
@@ -27,19 +27,19 @@ const cards = [
 
 const PolicyBanner = () => {
   return (
-    <div className=" justify-around mt-6 px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-64 hidden sm:flex">
+    <div className="mt-2 px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-64 grid grid-cols-4 gap-4 sm:grid-cols-4">
       {/* CARD */}
       {cards.map((card) => (
-        <div className="w-max flex flex-col p-2 justify-center items-center">
+        <div className="flex flex-col items-center p-2 justify-start">
           {/* CIRCULO */}
-          <div className="rounded-full h-28 w-28">
-            <img src={card.src} alt={card.alt} className="p-4" />
+          <div className="rounded-full h-20 w-20 sm:h-28 sm:w-28">
+            <img src={card.src} alt={card.alt} className="p-3 sm:p-4" />
           </div>
           {/* TEXTOS */}
-          <p className="w-max text-md sm:text-sm text-[#252525] sm:text-wrap">
+          <p className="text-[0.6rem] xs:text-xs text-center sm:text-sm text-[#252525] mt-2">
             {card.title}
           </p>
-          <p className="w-max text-sm text-[#847e7e] hidden md:block">
+          <p className="text-sm text-center text-[#847e7e] mt-1 hidden md:block">
             {card.subtitle}
           </p>
         </div>
