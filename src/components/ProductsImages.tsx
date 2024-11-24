@@ -3,13 +3,11 @@
 import Image from "next/image";
 import {useState} from "react";
 
-
-
 const ProductsImages = ({items}: {items: any}) => {
   const [index, setIndex] = useState(0);
   return (
     <div className="">
-      <div className="h-[500px] relative">
+      <div className="h-[300px] sm:h-[500px] relative">
         <Image
           src={items[index].image?.url}
           alt=""
@@ -18,7 +16,7 @@ const ProductsImages = ({items}: {items: any}) => {
           className="object-cover rounded-md"
         />
       </div>
-      <div className="flex justify-between gap-4 mt-8 cursor-pointer">
+      <div className="flex justify-start gap-4 cursor-pointer">
         {items.map((item: any, i: number) => (
           <div
             className="relative w-1/4 h-32 gap-4 mt-8"
