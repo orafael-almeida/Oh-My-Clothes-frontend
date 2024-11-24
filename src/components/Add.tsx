@@ -64,7 +64,7 @@ const Add = ({
         <button
           onClick={() => addItem(wixClient, productId, variantId, quantity)}
           disabled={isLoading}
-          className="w-36 text-sm rounded-3xl ring-1 ring-rosa text-rosa py-2 px-4 hover:bg-rosa hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-white disabled:ring-0
+          className="w-max text-sm rounded-3xl ring-1 ring-rosa text-rosa px-2 py-2 sm:px-4 hover:bg-rosa hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-white disabled:ring-0
         "
         >
           Adicionar

@@ -19,6 +19,26 @@ const CustomizeProducts = ({
   const [selectedVariant, setSelectedvariant] = useState<products.Variant>();
 
   useEffect(() => {
+    // Seleciona a primeira cor e tamanho disponíveis
+    const initialSelections: {[key: string]: string} = {};
+
+    productOptions.forEach((option) => {
+      const availableChoice = option.choices?.find((choice) =>
+        isVariantInStock({
+          ...initialSelections,
+          [option.name!]: choice.description!,
+        })
+      );
+
+      if (availableChoice) {
+        initialSelections[option.name!] = availableChoice.description!;
+      }
+    });
+
+    setSelectedOptions(initialSelections);
+  }, [productOptions, variants]);
+
+  useEffect(() => {
     const variant = variants.find((variant) => {
       const variantChoices = variant.choices;
       if (!variantChoices) return false;
