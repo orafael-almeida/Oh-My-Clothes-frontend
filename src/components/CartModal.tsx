@@ -11,6 +11,10 @@ const CartModal = () => {
 
   const wixClient = useWixClient();
   const {cart, isLoading, removeItem} = useCartStore();
+  const totalValue = cart.lineItems?.reduce((total, item) => {
+    const itemTotal = Number(item.price?.amount) * (item.quantity || 0);
+    return total + (itemTotal || 0);
+  }, 0);
 
   return (
     <div className="w-max absolute p-2 xxs:p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white flex flex-col xxs:gap-6 z-20 top-8 -right-[62px]">
@@ -99,7 +103,7 @@ const CartModal = () => {
           <div className="">
             <div className="flex items-center justify-between font-semibold">
               <span className="">Total</span>
-              <span className="">R$ {cart.subtotal.amount} </span>
+              <span className="">R$ {totalValue?.toFixed(2)}</span>
             </div>
             <p className="hidden xs:flex text-gray-500 text-sm mt-2 mb-4">
               Valor da entrega calculada no final.
