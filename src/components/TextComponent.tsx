@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 const TextComponent = () => {
   return (
     <Marquee className="bg-black mt-24">
-      <span className="text-white tracking-wider font-bold">
+      <span className="text-white tracking-wider font-bold ml-4">
         As imagens utilizadas neste site foram gentilmente autorizadas pela loja{" "}
       </span>
       <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#3de85d] via-[#03f6f4] to-[#937fff] font-extrabold text-2xl mx-2">
