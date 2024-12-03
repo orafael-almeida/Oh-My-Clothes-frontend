@@ -1,20 +1,20 @@
 "use client";
 
-import {useEffect, useState, useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Menu from "./Menu";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import SearchBar from "./SearchBar";
 
-const NavIcons = dynamic(() => import("./NavIcons"), {ssr: false});
+const NavIcons = dynamic(() => import("./NavIcons"), { ssr: false });
 
 const pageLinks = [
-  {name: "Home", href: "/"},
-  {name: "Produtos", href: "/list"},
-  {name: "Compras", href: "/list"},
-  {name: "Sobre", href: "/"},
-  {name: "Contato", href: "/"},
+  { name: "Home", href: "/" },
+  { name: "Produtos", href: "/list" },
+  { name: "Compras", href: "/list" },
+  { name: "Sobre", href: "/" },
+  { name: "Contato", href: "/" },
 ];
 
 const Navbar = () => {
@@ -66,8 +66,7 @@ const Navbar = () => {
       {/* MOBILE */}
       <div className="h-full flex items-center justify-between sm:hidden">
         <Link href="/" className="flex items-center gap-3">
-          <Image src="/logo.png" alt="" width={24} height={24} />
-          <div className="text-2xl tracking-wide">SHOP</div>
+        <Image src="/logo.svg" alt="logo" width={80} height={80} />
         </Link>
         <div className="hidden xxs:flex items-center justify-between gap-2">
           <NavIcons />
@@ -79,9 +78,8 @@ const Navbar = () => {
       <div className="hidden sm:flex items-center h-full justify-between">
         {/* LEFT */}
         <div className="w-1/3 xl:w-1/2 flex items-center gap-12">
-          <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.png" alt="" width={24} height={24} />
-            <div className="text-2xl tracking-wide">SHOP</div>
+          <Link href="/" className="flex items-center gap-3 ">
+            <Image src="/logo.svg" alt="logo" width={80} height={80} className="rounded-md"/>
           </Link>
           <div className="hidden flex-shrink gap-4 xl:flex">
             {pageLinks.map((link) => (

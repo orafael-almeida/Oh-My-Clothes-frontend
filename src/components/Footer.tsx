@@ -13,10 +13,10 @@ const Footer = () => {
           {/* LEFT */}
           <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-4 md:gap-8">
             <Link href="/">
-              <div className="text-2xl tracking-wide">SHOP+</div>
+              <div className="text-2xl tracking-wide">Oh My Clothes</div>
             </Link>
             <p>Av. Beira Mar Norte, Centro Florianópolis - SC, 88015-970</p>
-            <span className="font-semibold">contato@shop.dev</span>
+            <span className="font-semibold">contato@ohmyclothes.dev</span>
             <span className="font-semibold">(48) 99999-9999</span>
             <div className="flex gap-6">
               <Image
@@ -80,7 +80,7 @@ const Footer = () => {
             <div className="flex">
               <input
                 type="text"
-                placeholder="Email address"
+                placeholder="Seu melhor e-mail"
                 className="p-4 w-3/4"
               />
               <button className="w-1/4 bg-rosa text-white flex items-center justify-center">
@@ -97,7 +97,7 @@ const Footer = () => {
         </div>
         {/* BOTTOM */}
         <div className="md:px-8 lg:px-16 xl:32 2xl:px-64 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 mb-5">
-          <div className="">© 2024 Ecommerce Shop</div>
+          <div className="">© 2024 Oh My Clothes</div>
           <div className="flex flex-col gap-4 md:gap-8 md:flex-row">
             <div className="">
               <span className="text-gray-500 mr-4">Linguagem</span>
