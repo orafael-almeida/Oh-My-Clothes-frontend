@@ -66,7 +66,7 @@ const Navbar = () => {
       {/* MOBILE */}
       <div className="h-full flex items-center justify-between sm:hidden">
         <Link href="/" className="flex items-center gap-3">
-        <Image src="/logo.svg" alt="logo" width={80} height={80} />
+        <Image src="/logo.svg" alt="logo" width={60} height={60} />
         </Link>
         <div className="hidden xxs:flex items-center justify-between gap-2">
           <NavIcons />
@@ -79,7 +79,7 @@ const Navbar = () => {
         {/* LEFT */}
         <div className="w-1/3 xl:w-1/2 flex items-center gap-12">
           <Link href="/" className="flex items-center gap-3 ">
-            <Image src="/logo.svg" alt="logo" width={80} height={80} className="rounded-md"/>
+            <Image src="/logo.svg" alt="logo" width={60} height={60} className="rounded-md"/>
           </Link>
           <div className="hidden flex-shrink gap-4 xl:flex">
             {pageLinks.map((link) => (

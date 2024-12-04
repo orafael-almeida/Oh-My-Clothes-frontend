@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {RiMailSendLine} from "react-icons/ri";
+import { RiMailSendLine } from "react-icons/ri";
 import TextComponent from "./TextComponent";
 
 const Footer = () => {
@@ -12,8 +12,9 @@ const Footer = () => {
         <div className="py-12 px-4 md:px-8 lg:px-16 xl:32 2xl:px-64 flex flex-col md:flex-row justify-between gap-12 md:gap-24">
           {/* LEFT */}
           <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-4 md:gap-8">
-            <Link href="/">
-              <div className="text-2xl tracking-wide">Oh My Clothes</div>
+            <Link href="/" className="flex gap-2">
+              <Image src="/logo.svg" alt="logo" width={60} height={60} />
+              <div className="text-2xl tracking-wide">Oh My Clothes!</div>
             </Link>
             <p>Av. Beira Mar Norte, Centro Florianópolis - SC, 88015-970</p>
             <span className="font-semibold">contato@ohmyclothes.dev</span>
@@ -97,7 +98,7 @@ const Footer = () => {
         </div>
         {/* BOTTOM */}
         <div className="md:px-8 lg:px-16 xl:32 2xl:px-64 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 mb-5">
-          <div className="">© 2024 Oh My Clothes</div>
+          <div className="">© 2024 Oh My Clothes!</div>
           <div className="flex flex-col gap-4 md:gap-8 md:flex-row">
             <div className="">
               <span className="text-gray-500 mr-4">Linguagem</span>
